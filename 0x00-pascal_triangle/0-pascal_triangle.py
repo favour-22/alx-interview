@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def pascal_triangle(n):
     """
     Returns a string representation of Pascal's Triangle up to n rows.
