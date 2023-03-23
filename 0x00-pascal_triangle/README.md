@@ -19,11 +19,16 @@ Once the line list is complete, it is appended to the triangle list.
 Finally, the triangle list is returned.
 Overall, the code is well-organized, readable, and follows PEP 8 guidelines for Python code styling._
 
-#Output
-[1] 
-[1 1] 
-[1 2 1] 
-[1 3 3 1] 
-[1 4 6 4 1]
+# Output
+ 
+ *[1]
+ 
+*[1 1] 
+
+*[1 2 1]
+
+*[1 3 3 1]
+
+*[1 4 6 4 1]
 
 
