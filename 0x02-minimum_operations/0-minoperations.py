@@ -3,7 +3,7 @@
 """
 
 
-def min_operations(n):
+def minOperations(n):
     """Calculates the fewest number of operations needed to result in
     exactly n H characters in the file.
 
@@ -21,18 +21,18 @@ def min_operations(n):
     if not isinstance(n, int):
         return 0
     ops_count = 0
-    copied = 0
+    counter = 0
     done = 1
     while done < n:
-        if copied == 0:
-            copied = done
-            done += copied
+        if counter == 0:
+            counter = done
+            done +=counter
             ops_count += 2
         elif n - done > 0 and (n - done) % done == 0:
-            copied = done
-            done += copied
+           counter = done
+            done += counter
             ops_count += 2
-        elif copied > 0:
-            done += copied
+        elif counter > 0:
+            done += counter
             ops_count += 1
     return ops_count
