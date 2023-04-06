@@ -1,43 +1,38 @@
 #!/usr/bin/python3
-"""
-This module contains a method that calculates the fewest number of operations
-needed to result in exactly n H characters in the file.
+"""Module for task 0
 """
 
-def minOperations(n):
-    """
-    Calculates the fewest number of operations needed to result in exactly n H
-    characters in the file.
+
+def min_operations(n):
+    """Calculates the fewest number of operations needed to result in
+    exactly n H characters in the file.
+
+    In a text file, there is a single character H. Your text editor can
+    execute only two operations in this file: Copy All and Paste characters
+    in the file.
 
     Args:
-        n (int): The target number of H characters.
+        n (int): The number of desired H characters.
 
     Returns:
-        int: The fewest number of operations needed to reach n H characters.
-
-    Raises:
-        ValueError: If n is less than or equal to 1.
-        Exception: If it is impossible to reach n H characters using Copy All and Paste operations.
+        int: The number of minimal operations needed to get n H characters
+    or 0 if it is impossible to achieve n.
     """
-    if n <= 1:
-        raise ValueError("n must be greater than 1.")
-    
-    operations = 0
-    divisor = 2
-    
-    while n > 1:
-        if n % divisor == 0:
-            n //= divisor
-            operations += divisor
-        else:
-            divisor += 1
-    
-    if n != 1:
-        raise Exception("It is impossible to reach {} H characters using Copy All and Paste operations.".format(n))
-    
-    return operations
-
-
-if __name__ == '__main__':
-    n = 9
-    print("minOperations({}) = {}".format(n, minOperations(n)))
+    if not isinstance(n, int):
+        return 0
+    ops_count = 0
+    copied = 0
+    done = 1
+    while done < n:
+        if copied == 0:
+            copied = done
+            done += copied
+            ops_count += 2
+        elif n - done > 0 and (n - done) % done == 0:
+            copied = done
+            done += copied
+            ops_count += 2
+        elif copied > 0:
+            done += copied
+            ops_count += 1
+    return ops_count
